@@ -28,16 +28,16 @@ function MinimalMetamask() {
         version: "1.0",
         from: account[0],
         chainId: chainId,
-        atomicRequired: true,
+        //atomicRequired: true,
         calls: [
           {
-            to: "0x6b658aB751e633b64a92a78B33406B8aF5EA61C7",
+            to: "0x0c091A7F09bf4Ec2A6f1d664d3792F6518148214",
             value: ethToHexWei(0.01), 
           },
-          // {
-          //   to: "0x6b658aB751e633b64a92a78B33406B8aF5EA61C7",
-          //   value: ethToHexWei(0.01), 
-          // }
+          {
+            to: "0x0c091A7F09bf4Ec2A6f1d664d3792F6518148214",
+            value: ethToHexWei(0.01), 
+          },
         ]
       }
 

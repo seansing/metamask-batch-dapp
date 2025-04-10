@@ -10,8 +10,6 @@ function App() {
     )
 
     const { address, isConnected } = useAccount();
-    const { connect, connectors } = useConnect();
-    const { sendTransaction } = useSendTransaction();
   
       // Check if the user is connected to MetaMask
       if (!isConnected) {
@@ -30,13 +28,6 @@ function App() {
 
     const handleSendCalls = async () => {
       try {
-        console.log("SENDER",address);
-        // const tx = await sendTransaction({
-        //   to: '0xc1490D19dD9fFA6912bC0349ebc7515E7bF0F5b1',
-        //   value: parseEther('0.01'),
-        // });
-
-
         const tx = await sendCalls({
           calls: [
             {

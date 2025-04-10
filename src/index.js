@@ -13,11 +13,12 @@ const queryClient = new QueryClient()
 
 root.render(
   <React.StrictMode>
-    <WagmiProvider config={config}>
+    {/* <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}> 
       <App />
       </QueryClientProvider>
-    </WagmiProvider>
+    </WagmiProvider> */}
+    <MinimalMetamask />
   </React.StrictMode>
 );
 
