@@ -20,37 +20,35 @@ function MinimalMetamask() {
         return
       }
 
-      // Batch calls to dummy addresses
-      console.log("SENDER", account[0]);
-      console.log(chainId)
+      try {
+        const capabilities = await window.ethereum.request({
+          method: 'wallet_getCapabilities',
+          params: [account[0], ["0x2105"]]
+          ,
+        }).then((res) => {
+          console.log("Capabilities", res);
+        })
+      } catch (err) {
+
+      }      
+
 
       const params = {
-        version: "1.0",
+        version: "2.0.0",
         from: account[0],
         chainId: chainId,
-        //atomicRequired: true,
+        atomicRequired: true,
         calls: [
           {
-            to: "0x0c091A7F09bf4Ec2A6f1d664d3792F6518148214",
-            value: ethToHexWei(0.01), 
+            to: "0x59859773a9E0bC355a525FE2f19A8417678E5C38",
+            value: ethToHexWei(0.0001), 
           },
           {
-            to: "0x0c091A7F09bf4Ec2A6f1d664d3792F6518148214",
-            value: ethToHexWei(0.01), 
+            to: "0x760003aeb35c46Ca10B5112A2A8a0AD59d42356D",
+            value: ethToHexWei(0.0001), 
           },
         ]
       }
-
-      // const tx1 = {
-      //   to: '0xc1490D19dD9fFA6912bC0349ebc7515E7bF0F5b1',
-      //   from: account[0],
-      //   value: ethToHexWei(0.01), 
-      // }
-
-      // const result = await window.ethereum.request({
-      //   method: 'eth_sendTransaction',
-      //   params: [tx1],
-      // })
       
       const result = await window.ethereum.request({
         method: 'wallet_sendCalls',
@@ -68,7 +66,7 @@ function MinimalMetamask() {
 
   return (
     <div style={{ padding: '2rem' }}>
-      <h2>MetaMask wallet_sendCalls Test</h2>
+      <h2>EIP-5792 wallet_sendCalls Test</h2>
       <button onClick={sendBatchCalls}>Send Batch Calls</button>
     </div>
   )
